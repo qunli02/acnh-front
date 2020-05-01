@@ -1,12 +1,27 @@
 import React from 'react';
 import './App.css';
+import { connect } from "react-redux";
 
-function App() {
-  return (
-    <div className="App">
+class App extends React.Component {
 
-    </div>
-  );
+  render(){
+      return(
+        <div> Loading</div>
+      )
+    }
 }
 
-export default App;
+function mapStateToProps(state){
+  return{
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return{
+    handleplayers: (players) => {
+      dispatch({type: "PLAYERS", data: players})
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
