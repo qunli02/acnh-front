@@ -28,7 +28,9 @@ class Login extends React.Component {
             <br/>
             <input type="submit" value="Log in" />
           </form>
-          <button onClick={() => <Redirect push to="/somewhere/else"/> }>Register</button>
+          <Link to="/register" class="button" >
+          <button>Register</button>
+          </Link>
         </div>
       )
     }
