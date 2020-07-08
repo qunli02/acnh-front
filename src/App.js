@@ -3,17 +3,32 @@ import './App.css';
 import { Route, Switch, Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Login from './login';
-import Register from './register';
-import Profile from './profile';
+import Register from './register.js';
+import Profile from './profile.js';
+import Navbar from './navbar.js';
 
 class App extends React.Component {
 
-  state
+  componentDidMount(){
+    const token = localStorage.token
+    if(token){
+      fetch("http://localhost:4000/api/v1/profile",{
+        headers: {
+          "Authorization": `jwt: ${token}`
+        }
+      })
+      .then(r => r.json())
+      .then(data => {
+        this.props.handleuser(data.user)
+      })
+    }
+  }
 
   render(){
       return(
         <div>
           asdsadaf
+          <Navbar/>
           <Switch>
             <Route exact path="/" render={()=><Login/>} />
             <Route exact path="/register" render={()=><Register/>} />
@@ -26,13 +41,13 @@ class App extends React.Component {
 
 function mapStateToProps(state){
   return{
-    login: state.login
+    user: state.user
   }
 }
 
 function mapDispatchToProps(dispatch){
   return{
-    handleplayers: (login) => {
+    handleuser: (login) => {
       dispatch({type: "LOGIN", data: login})
     }
   }
