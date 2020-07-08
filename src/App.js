@@ -8,7 +8,7 @@ import Profile from './profile';
 
 class App extends React.Component {
 
-
+  state
 
   render(){
       return(
@@ -26,13 +26,14 @@ class App extends React.Component {
 
 function mapStateToProps(state){
   return{
+    login: state.login
   }
 }
 
 function mapDispatchToProps(dispatch){
   return{
-    handleplayers: (players) => {
-      dispatch({type: "PLAYERS", data: players})
+    handleplayers: (login) => {
+      dispatch({type: "LOGIN", data: login})
     }
   }
 }
