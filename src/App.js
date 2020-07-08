@@ -4,6 +4,7 @@ import { Route, Switch, Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Login from './login';
 import Register from './register';
+import Profile from './profile';
 
 class App extends React.Component {
 
@@ -16,6 +17,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" render={()=><Login/>} />
             <Route exact path="/register" render={()=><Register/>} />
+            <Route exact path="/profile" render={()=><Profile/>} />
           </Switch>
         </div>
       )
