@@ -13,7 +13,7 @@ class Navbar extends React.Component {
                 <li><a href="/">Home</a></li>
                 <li><a href="/register">Register</a></li>
                 <li><a href="/profile">Profile</a></li>
-                <li ><a href="/">Login</a></li>
+                <li className="login"><a href="/" className="login" >{this.props.user? "Logout" : "Login"}</a></li>
             </ul>
           </div>
         )
