@@ -13,6 +13,11 @@ class Profile extends React.Component {
 
   handleDataUpdate= (e) => {
     debugger
+     
+    console.log(this.props.user);
+    let date = new Date(e.target[0].value)
+    let time = e.target[1].value
+    let price = e.target[3].value
   }
 
   render(){
