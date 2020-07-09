@@ -5,6 +5,10 @@ import './navbar.css';
 
 class Navbar extends React.Component {
 
+    handlelogout= () => {
+        localStorage.token = ""
+    }
+
 
     render(){
         return(
@@ -13,7 +17,7 @@ class Navbar extends React.Component {
                 <li><a href="/">Home</a></li>
                 <li><a href="/register">Register</a></li>
                 <li><a href="/profile">Profile</a></li>
-                <li className="login"><a href="/" className="login" >{this.props.user? "Logout" : "Login"}</a></li>
+                {this.props.user? <li className="login" onClick={this.handlelogout}><a href="/" className="login" >Logout</a></li> : <li className="login"><a href="/" className="login" >Login</a></li>}
             </ul>
           </div>
         )
