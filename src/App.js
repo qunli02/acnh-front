@@ -27,7 +27,6 @@ class App extends React.Component {
   render(){
       return(
         <div>
-          asdsadaf
           <Navbar/>
           <Switch>
             <Route exact path="/" render={()=><Login/>} />

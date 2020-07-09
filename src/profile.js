@@ -19,6 +19,31 @@ class Profile extends React.Component {
           <br/>
           User Name: {this.props.user && this.props.user.username}
 
+          <form>
+          <h1>
+            Turnnip price
+          </h1>
+            <label>
+              Date:
+              <input type="date" name="date" />
+            </label>
+            <br/>
+            <label>
+              Time:
+              
+            </label>
+            <input type="radio" id="mmorningale" name="time" value="morning"/>
+            <label for="afternoon">Morning</label>
+            <input type="radio" id="afternoon" name="time" value="afternoon"/>
+            <label for="afternoon">Afternoon</label><br/>            
+            <label>
+              Price:
+              <input type="number" name="price" />
+            </label>
+            <br/>
+            <input type="submit" value="add/change" />
+          </form>
+
         </div>
       )
     }
