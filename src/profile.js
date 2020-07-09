@@ -11,6 +11,10 @@ class Profile extends React.Component {
     return this.props.user? null : <Redirect to="/" />
   }
 
+  handleDataUpdate= (e) => {
+    debugger
+  }
+
   render(){
     return(
         <div>
@@ -19,7 +23,7 @@ class Profile extends React.Component {
           <br/>
           User Name: {this.props.user && this.props.user.username}
 
-          <form>
+          <form onSubmit={this.handleDataUpdate}>
           <h1>
             Turnnip price
           </h1>
