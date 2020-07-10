@@ -12,15 +12,41 @@ class Profile extends React.Component {
   }
 
   handleDataUpdate= (e) => {
-    debugger
-     
-    console.log(this.props.user);
+
+    e.preventDefault()
     let date = new Date(e.target[0].value)
-    let time = e.target[1].value
+    let time = e.target[1].checked? e.target[1].value : e.target[2].value
     let price = e.target[3].value
+
+    let priceData = {date: date, time: time, price: price, }
+
+
+    fetch(`http://localhost:4000/api/v1/turnip_sell_prices`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        "Authorization": `jwt: ${localStorage.token}`
+      },
+      body: JSON.stringify(priceData),
+    })
+    .then(r=>r.json())
+    .then(data=> {
+      console.log(data);
+      
+    })
+
+
   }
 
+
+  let a= "v"
+
   render(){
+
+    console.log(a);
+    
+
     return(
         <div>
           {this.show()}
@@ -41,7 +67,7 @@ class Profile extends React.Component {
               Time:
               
             </label>
-            <input type="radio" id="mmorningale" name="time" value="morning"/>
+            <input type="radio" id="mmorning" name="time" value="morning"/>
             <label for="afternoon">Morning</label>
             <input type="radio" id="afternoon" name="time" value="afternoon"/>
             <label for="afternoon">Afternoon</label><br/>            
