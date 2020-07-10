@@ -8,8 +8,8 @@ function reducer(prevState = defaultState, action){
     case "LOGIN":
       return {...prevState, user: action.data}
     case "SELLPRICE":
-      debugger
-      return {...prevState, user: {...prevState.user, turnip_sell_prices: [...prevState.user.turnip_sell_prices, action.data]}}
+      let turnipPrice = prevState.user.turnip_sell_prices.filter((price) => {return price.id != action.data.id})
+      return {...prevState, user: {...prevState.user, turnip_sell_prices: [...turnipPrice, action.data]}}
     default:
       return prevState
   }
