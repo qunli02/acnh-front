@@ -14,19 +14,20 @@ class Profile extends React.Component {
   handleDataUpdate= (e) => {
 
     e.preventDefault()
-    console.log(this.props);
     
     let date = new Date(e.target[0].value)
     let time = e.target[1].checked? e.target[1].value : e.target[2].value
     let price = e.target[3].value
 
-    // this.props.user.turnip_sell_prices.filter((price)=>{
-    //   console.log((new Date(price.date)) === (new Date(Date.now())));
-    //   console.log(this.props);
+    let existedPrice = this.props.user.turnip_sell_prices.filter((price)=>{
       
-    //   debugger
-    //   return (new Date(price.date)) === (new Date(Date.now()))
-    //  })
+      return (
+        (new Date(price.date).getFullYear()) === (new Date(date).getFullYear())
+        && (new Date(price.date).getMonth()) === (new Date(date).getMonth())
+        && (new Date(price.date).getDate()) === (new Date(date).getDate())
+        )
+     })
+
 
     let priceData = {date: date, time: time, price: price, }
 
@@ -42,8 +43,7 @@ class Profile extends React.Component {
     })
     .then(r=>r.json())
     .then(data=> {
-      console.log(data);
-      
+      this.props.handlesellprice(data)
     })
 
 
@@ -119,8 +119,8 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return{
-    handleuser: (login) => {
-      dispatch({type: "LOGIN", data: login})
+    handlesellprice: (sellPrice) => {
+      dispatch({type: "SELLPRICE", data: sellPrice})
     }
   }
 }
