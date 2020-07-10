@@ -14,9 +14,19 @@ class Profile extends React.Component {
   handleDataUpdate= (e) => {
 
     e.preventDefault()
+    console.log(this.props);
+    
     let date = new Date(e.target[0].value)
     let time = e.target[1].checked? e.target[1].value : e.target[2].value
     let price = e.target[3].value
+
+    // this.props.user.turnip_sell_prices.filter((price)=>{
+    //   console.log((new Date(price.date)) === (new Date(Date.now())));
+    //   console.log(this.props);
+      
+    //   debugger
+    //   return (new Date(price.date)) === (new Date(Date.now()))
+    //  })
 
     let priceData = {date: date, time: time, price: price, }
 
@@ -39,17 +49,34 @@ class Profile extends React.Component {
 
   }
 
+  weekday= (date) => {
 
-  let a= "v"
+    let weekday = new Array(7);
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+    let day = (new Date(date)).getDay()
+    return weekday[day]
+  }
+
+  
+
 
   render(){
-
-    console.log(a);
-    
-
     return(
         <div>
           {this.show()}
+          <ul>
+          {this.props.user && this.props.user.turnip_sell_prices && this.props.user.turnip_sell_prices.map((price) => {
+           return (
+             <li key = {price.id}>{this.weekday(price.date)}, {price.morning_price}, {price.afternoon_price}</li>
+           )})
+          }
+          </ul>
           profile
           <br/>
           User Name: {this.props.user && this.props.user.username}

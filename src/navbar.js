@@ -13,11 +13,11 @@ class Navbar extends React.Component {
     render(){
         return(
           <div>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/register">Register</a></li>
-                <li><a href="/profile">Profile</a></li>
-                {this.props.user? <li className="login" onClick={this.handlelogout}><a href="/" className="login" >Logout</a></li> : <li className="login"><a href="/" className="login" >Login</a></li>}
+            <ul className = "navbarul">
+                <li className="navbarli"><a href="/">Home</a></li>
+                <li className="navbarli"><a href="/register">Register</a></li>
+                <li className="navbarli"><a href="/profile">Profile</a></li>
+                {this.props.user? <li className="login navbarli" onClick={this.handlelogout}><a href="/" className="login navbarli" >Logout</a></li> : <li className="login"><a href="/" className="login" >Login</a></li>}
             </ul>
           </div>
         )
