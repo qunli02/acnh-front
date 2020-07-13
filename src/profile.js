@@ -63,6 +63,12 @@ class Profile extends React.Component {
     return weekday[day]
   }
 
+  exactDate = (date) => {
+    return (new Date(date)).toLocaleString('en-US',{
+      dateStyle: "short"
+      })
+  }
+
   
 
 
@@ -71,11 +77,12 @@ class Profile extends React.Component {
         <div>
           {this.show()}
           <ul>
-          {this.props.user && this.props.user.turnip_sell_prices && this.props.user.turnip_sell_prices.map((price) => {
-           return (
-             <li key = {price.id}>{this.weekday(price.date)}, {price.morning_price}, {price.afternoon_price}</li>
-           )})
-          }
+            {}
+            {this.props.user && this.props.user.turnip_sell_prices && this.props.user.turnip_sell_prices.map((price) => {
+              return (
+              <li key = {price.id}>{this.exactDate(price.date)} {this.weekday(price.date)}, {price.morning_price}, {price.afternoon_price}</li>
+              )
+            })}
           </ul>
           profile
           <br/>
