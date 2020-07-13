@@ -64,6 +64,7 @@ class Profile extends React.Component {
   }
 
   exactDate = (date) => {
+    
     return (new Date(date)).toLocaleString('en-US',{
       dateStyle: "short"
       })
@@ -73,12 +74,17 @@ class Profile extends React.Component {
 
 
   render(){
+
+    let sortedPrice = this.props.user && this.props.user.turnip_sell_prices && this.props.user.turnip_sell_prices.sort((a,b) => {
+      return new Date(a.date) - new Date(b.date)
+    })
+
     return(
         <div>
           {this.show()}
           <ul>
             {}
-            {this.props.user && this.props.user.turnip_sell_prices && this.props.user.turnip_sell_prices.map((price) => {
+            {this.props.user && this.props.user.turnip_sell_prices && sortedPrice.map((price) => {
               return (
               <li key = {price.id}>{this.exactDate(price.date)} {this.weekday(price.date)}, {price.morning_price}, {price.afternoon_price}</li>
               )
