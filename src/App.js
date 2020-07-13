@@ -6,6 +6,7 @@ import Login from './login';
 import Register from './register.js';
 import Profile from './profile.js';
 import Navbar from './navbar.js';
+import Home from './hmae.js';
 
 class App extends React.Component {
 
@@ -29,6 +30,7 @@ class App extends React.Component {
         <div>
           <Navbar/>
           <Switch>
+            <Route exact path="/" render={()=><Home/>} />
             <Route exact path="/login" render={()=><Login/>} />
             <Route exact path="/register" render={()=><Register/>} />
             <Route exact path="/profile" render={()=><Profile/>} />
