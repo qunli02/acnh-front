@@ -17,7 +17,9 @@ class Navbar extends React.Component {
                 <li className="navbarli"><a href="/">Home</a></li>
                 <li className="navbarli"><a href="/register">Register</a></li>
                 <li className="navbarli"><a href="/profile">Profile</a></li>
-                {this.props.user? <li className="login navbarli" onClick={this.handlelogout}><a href="/" className="login navbarli" >Logout</a></li> : <li className="login"><a href="/" className="login" >Login</a></li>}
+                {this.props.user? 
+                <li className="login navbarli" onClick={this.handlelogout}><a href="/login" className="login navbarli" >Logout</a></li> 
+                : <li className="login navbarli"><a href="/login" className="login" >Login</a></li>}
             </ul>
           </div>
         )

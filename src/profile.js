@@ -8,7 +8,7 @@ import {Redirect} from "react-router-dom";
 class Profile extends React.Component {
 
   show =() => {
-    return this.props.user? null : <Redirect to="/" />
+    return this.props.user? null : <Redirect to="/login" />
   }
 
   handleDataUpdate= (e) => {
@@ -83,7 +83,6 @@ class Profile extends React.Component {
         <div>
           {this.show()}
           <ul>
-            {}
             {this.props.user && this.props.user.turnip_sell_prices && sortedPrice.map((price) => {
               return (
               <li key = {price.id}>{this.exactDate(price.date)} {this.weekday(price.date)}, {price.morning_price}, {price.afternoon_price}</li>
@@ -107,7 +106,7 @@ class Profile extends React.Component {
               Time:
               
             </label>
-            <input type="radio" id="mmorning" name="time" value="morning"/>
+            <input type="radio" id="morning" name="time" value="morning"/>
             <label for="afternoon">Morning</label>
             <input type="radio" id="afternoon" name="time" value="afternoon"/>
             <label for="afternoon">Afternoon</label><br/>            
