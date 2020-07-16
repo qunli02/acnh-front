@@ -5,3 +5,52 @@ td {
   padding: 15px;
   border-collapse: collapse;
 }
+
+table {
+  overflow: scroll;
+  display: block;
+  padding: 0px;
+}
+
+.c1 {
+  -webkit-transform: translate(-20px, 20px);
+  -ms-transform: translate(-20px, 20px);
+  transform: translate(-20px, 20px);
+}
+
+.c2 {
+  -webkit-transform: translate(20px, -20px);
+  -ms-transform: translate(20px, -20px);
+  transform: translate(20px, -20px);
+}
+
+#dividedCell {
+  padding: 20px;
+  border: 1px solid black;
+  background-image: -webkit-gradient(
+    linear,
+    right top,
+    left bottom,
+    color-stop(49%, white),
+    color-stop(50%, black),
+    color-stop(51%, white)
+  );
+  background-image: -webkit-linear-gradient(
+    top right,
+    white 49%,
+    black 50%,
+    white 51%
+  );
+  background-image: -o-linear-gradient(
+    top right,
+    white 49%,
+    black 50%,
+    white 51%
+  );
+  background-image: linear-gradient(
+    to bottom left,
+    white 49%,
+    black 50%,
+    white 51%
+  );
+}

@@ -87,12 +87,33 @@ class Profile extends React.Component {
         );
       });
     let showNow = this.state.allPrice ? sortedPrice : onlySeven;
+    if (showNow != null) {
+      for (let i = 0; i < 7; i++) {
+        if (
+          (showNow[i] && new Date(showNow[i].date).getDay() != i) ||
+          showNow[i]
+        ) {
+        } else {
+          showNow.push({
+            date: new Date(
+              new Date(Date.now()) -
+                (new Date(Date.now()).getDay() - i) * 86400000
+            ),
+          });
+        }
+      }
+    }
+    console.log(showNow);
 
     return (
       <div>
         {this.show()}
         <table>
           <tr>
+            <th id="dividedCell">
+              <div className="c1">Time</div>
+              <div className="c2">Date</div>
+            </th>
             {this.props.user &&
               this.props.user.turnip_sell_prices &&
               showNow.map((price) => {
@@ -104,13 +125,28 @@ class Profile extends React.Component {
               })}
           </tr>
           <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th>morning price</th>
+            {this.props.user &&
+              this.props.user.turnip_sell_prices &&
+              showNow.map((price) => {
+                return (
+                  <th key={price.id} className={this.weekday(price.date)}>
+                    {price.morning_price}
+                  </th>
+                );
+              })}
+          </tr>
+          <tr>
+            <th>Afternoon price</th>
+            {this.props.user &&
+              this.props.user.turnip_sell_prices &&
+              showNow.map((price) => {
+                return (
+                  <th key={price.id} className={this.weekday(price.date)}>
+                    {price.afternoon_price}
+                  </th>
+                );
+              })}
           </tr>
         </table>
         <ul>
@@ -130,7 +166,7 @@ class Profile extends React.Component {
         <br />
         User Name: {this.props.user && this.props.user.username}
         <form onSubmit={this.handleDataUpdate}>
-          <h1>Turnnip price</h1>
+          <h1>Turnip price</h1>
           <label>
             Date:
             <input type="date" name="date" />

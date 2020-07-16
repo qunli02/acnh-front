@@ -25,8 +25,6 @@ function reducer(prevState = defaultState, action) {
           return user.id != prevState.user.id;
         });
       }
-      console.log("wdw");
-
       return { ...prevState, allUsers: newUsers };
     default:
       return prevState;
