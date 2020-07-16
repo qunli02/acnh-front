@@ -23,6 +23,13 @@ class App extends React.Component {
         this.props.handleuser(data.user)
       })
     }
+
+    fetch("http://localhost:4000/api/v1/users")
+    .then(r => r.json())
+    .then(data => {
+        this.props.handleAllUser(data)
+    })
+
   }
 
   render(){
@@ -50,6 +57,9 @@ function mapDispatchToProps(dispatch){
   return{
     handleuser: (login) => {
       dispatch({type: "LOGIN", data: login})
+    },
+    handleAllUser: (allUsers) => {
+      dispatch({type: "ALLUSERS", data: allUsers})
     }
   }
 }

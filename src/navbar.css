@@ -1,31 +1,31 @@
 .navbarul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  .navbarli {
-    float: left;
-  }
-  
-  .navbarli a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  .navbarli a:hover:not(.active) {
-    background-color: #111;
-  }
-  
-  .active {
-    background-color: #4CAF50;
-  }
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
 
-  .login{
-    float:right;
-  }
+.navbarli {
+  float: left;
+}
+
+.navbarli a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbarli a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4caf50;
+}
+
+.login {
+  float: right;
+}
