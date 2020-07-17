@@ -30,27 +30,94 @@ class Home extends React.Component {
         <h1>Home</h1>
         {this.props.allUsers &&
           this.props.allUsers.map((user) => {
-            let sortedPrice = user.turnip_sell_prices.sort((a, b) => {
-              return new Date(a.date) - new Date(b.date);
-            });
+            let sortedPrice =
+              user &&
+              user.turnip_sell_prices &&
+              user.turnip_sell_prices.sort((a, b) => {
+                return new Date(a.date) - new Date(b.date);
+              });
+            let onlySeven =
+              sortedPrice &&
+              sortedPrice.filter((price) => {
+                return (
+                  new Date(Date.now()) - new Date(price.date) <
+                    (new Date(Date.now()).getDay() + 1) * 86400000 &&
+                  new Date(Date.now()) - new Date(price.date) >= 0
+                );
+              });
+            let showNow = onlySeven;
+            if (showNow != null) {
+              for (let i = 0; i < 7; i++) {
+                if (
+                  (showNow[i] && new Date(showNow[i].date).getDay() != i) ||
+                  showNow[i]
+                ) {
+                } else {
+                  showNow.push({
+                    date: new Date(
+                      new Date(Date.now()) -
+                        (new Date(Date.now()).getDay() - i) * 86400000
+                    ),
+                  });
+                }
+              }
+            }
             return (
               <>
-                {" "}
-                {user.username},{" "}
-                {
-                  <ul>
-                    {sortedPrice.map((price) => {
-                      return (
-                        <li key={price.id}>
-                          {this.exactDate(price.date)}{" "}
-                          {this.weekday(price.date)}, {price.morning_price},{" "}
-                          {price.afternoon_price}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                }{" "}
-                <br />{" "}
+                {user.username}
+                <table>
+                  <tr>
+                    <th id="dividedCell">
+                      <div className="c1">Time</div>
+                      <div className="c2">Date</div>
+                    </th>
+                    {user &&
+                      user.turnip_sell_prices &&
+                      showNow.map((price) => {
+                        return (
+                          <th
+                            key={price.id}
+                            className={this.weekday(price.date)}
+                          >
+                            {this.exactDate(price.date)}{" "}
+                            {this.weekday(price.date)}
+                          </th>
+                        );
+                      })}
+                  </tr>
+                  <tr>
+                    <th>morning price</th>
+                    {user &&
+                      user.turnip_sell_prices &&
+                      showNow.map((price) => {
+                        return (
+                          <th
+                            key={price.id}
+                            className={this.weekday(price.date)}
+                          >
+                            {price.morning_price}
+                          </th>
+                        );
+                      })}
+                  </tr>
+                  <tr>
+                    <th>Afternoon price</th>
+                    {user &&
+                      user.turnip_sell_prices &&
+                      showNow.map((price) => {
+                        return (
+                          <th
+                            key={price.id}
+                            className={this.weekday(price.date)}
+                          >
+                            {price.afternoon_price}
+                          </th>
+                        );
+                      })}
+                  </tr>
+                </table>
+
+                <br />
               </>
             );
           })}

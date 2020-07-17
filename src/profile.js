@@ -89,11 +89,19 @@ class Profile extends React.Component {
     let showNow = this.state.allPrice ? sortedPrice : onlySeven;
     if (showNow != null) {
       for (let i = 0; i < 7; i++) {
+        console.log(
+          !(
+            (showNow[i] && new Date(showNow[i].date).getDay() != i) ||
+            showNow[i]
+          )
+        );
+
         if (
-          (showNow[i] && new Date(showNow[i].date).getDay() != i) ||
-          showNow[i]
+          !(
+            (showNow[i] && new Date(showNow[i].date).getDay() != i) ||
+            showNow[i]
+          )
         ) {
-        } else {
           showNow.push({
             date: new Date(
               new Date(Date.now()) -
