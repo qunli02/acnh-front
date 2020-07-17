@@ -103,7 +103,6 @@ class Profile extends React.Component {
         }
       }
     }
-    console.log(showNow);
 
     return (
       <div>
@@ -149,18 +148,6 @@ class Profile extends React.Component {
               })}
           </tr>
         </table>
-        <ul>
-          {this.props.user &&
-            this.props.user.turnip_sell_prices &&
-            showNow.map((price) => {
-              return (
-                <li key={price.id}>
-                  {this.exactDate(price.date)} {this.weekday(price.date)},{" "}
-                  {price.morning_price}, {price.afternoon_price}
-                </li>
-              );
-            })}
-        </ul>
         <button onClick={this.showall}>view all price</button> <br />
         profile
         <br />
