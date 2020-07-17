@@ -26,14 +26,6 @@ class Profile extends React.Component {
     let time = e.target[1].checked ? e.target[1].value : e.target[2].value;
     let price = e.target[3].value;
 
-    let existedPrice = this.props.user.turnip_sell_prices.filter((price) => {
-      return (
-        new Date(price.date).getFullYear() === new Date(date).getFullYear() &&
-        new Date(price.date).getMonth() === new Date(date).getMonth() &&
-        new Date(price.date).getDate() === new Date(date).getDate()
-      );
-    });
-
     let priceData = { date: date, time: time, price: price };
 
     fetch(`http://localhost:4000/api/v1/turnip_sell_prices`, {
@@ -90,11 +82,11 @@ class Profile extends React.Component {
     if (showNow != null) {
       let j = 0;
       for (let i = 0; i < 7; i++) {
-        console.log(!(showNow[i] && new Date(showNow[i].date).getDay() != i));
+        console.log(!(showNow[i] && new Date(showNow[i].date).getDay() !== i));
 
         if (
           !(
-            (showNow[i] && new Date(showNow[i].date).getDay() != i) ||
+            (showNow[i] && new Date(showNow[i].date).getDay() !== i) ||
             showNow[i]
           )
         ) {

@@ -22,7 +22,7 @@ function reducer(prevState = defaultState, action) {
       let newUsers = action.data;
       if (prevState.user) {
         newUsers = action.data.filter((user) => {
-          return user.id != prevState.user.id;
+          return user.id !== prevState.user.id;
         });
       }
       return { ...prevState, allUsers: newUsers };
