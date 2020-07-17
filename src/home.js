@@ -48,17 +48,14 @@ class Home extends React.Component {
             let showNow = onlySeven;
             if (showNow != null) {
               for (let i = 0; i < 7; i++) {
-                if (
-                  (showNow[i] && new Date(showNow[i].date).getDay() !== i) ||
-                  showNow[i]
-                ) {
-                } else {
-                  showNow.push({
+                if (!showNow[i] || new Date(showNow[i].date).getDay() !== i) {
+                  showNow.splice(i, 0, {
                     date: new Date(
                       new Date(Date.now()) -
                         (new Date(Date.now()).getDay() - i) * 86400000
                     ),
                   });
+                } else {
                 }
               }
             }

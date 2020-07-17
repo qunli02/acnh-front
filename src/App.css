@@ -54,3 +54,25 @@ table {
     white 51%
   );
 }
+
+.Monday {
+  background-color: red;
+}
+.Tuesday {
+  background-color: orange;
+}
+.Wednesday {
+  background-color: yellow;
+}
+.Thursday {
+  background-color: green;
+}
+.Friday {
+  background-color: blue;
+}
+.Saturday {
+  background-color: indigo;
+}
+.Sunday {
+  background-color: violet;
+}

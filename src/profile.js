@@ -79,21 +79,16 @@ class Profile extends React.Component {
         );
       });
     let showNow = this.state.allPrice ? sortedPrice : onlySeven;
-    if (showNow != null) {
-      let j = 0;
-
+    if (showNow != null && this.state.allPrice === false) {
       for (let i = 0; i < 7; i++) {
-        console.log(showNow[j] && new Date(showNow[j].date).getDay(), i, j);
-        if (!showNow[j] || new Date(showNow[j].date).getDay() !== i) {
+        if (!showNow[i] || new Date(showNow[i].date).getDay() !== i) {
           showNow.splice(i, 0, {
             date: new Date(
               new Date(Date.now()) -
                 (new Date(Date.now()).getDay() - i) * 86400000
             ),
           });
-          j++;
         } else {
-          j++;
         }
       }
     }
