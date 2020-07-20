@@ -107,10 +107,7 @@ class Profile extends React.Component {
                 this.props.user.turnip_sell_prices &&
                 showNow.map((price) => {
                   return (
-                    <th
-                      key={price.id ? price.id : Math.random()}
-                      className={this.weekday(price.date)}
-                    >
+                    <th key={price.date} className={this.weekday(price.date)}>
                       {this.exactDate(price.date)} {this.weekday(price.date)}
                     </th>
                   );
@@ -124,10 +121,7 @@ class Profile extends React.Component {
                 this.props.user.turnip_sell_prices &&
                 showNow.map((price) => {
                   return (
-                    <th
-                      key={price.id ? price.id : Math.random()}
-                      className={this.weekday(price.date)}
-                    >
+                    <th key={price.date} className={this.weekday(price.date)}>
                       {price.morning_price}
                     </th>
                   );
@@ -141,10 +135,7 @@ class Profile extends React.Component {
                 this.props.user.turnip_sell_prices &&
                 showNow.map((price) => {
                   return (
-                    <th
-                      key={price.id ? price.id : Math.random()}
-                      className={this.weekday(price.date)}
-                    >
+                    <th key={price.date} className={this.weekday(price.date)}>
                       {price.afternoon_price}
                     </th>
                   );

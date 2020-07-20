@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./App.css";
 import { connect } from "react-redux";
 import "./reducer.js";
@@ -59,7 +59,7 @@ class Home extends React.Component {
               }
             }
             return (
-              <>
+              <Fragment key={user.id}>
                 {user.username}
                 <table>
                   <thead>
@@ -73,7 +73,7 @@ class Home extends React.Component {
                         showNow.map((price) => {
                           return (
                             <th
-                              key={price.id}
+                              key={price.date}
                               className={this.weekday(price.date)}
                             >
                               {this.exactDate(price.date)}{" "}
@@ -91,7 +91,7 @@ class Home extends React.Component {
                         showNow.map((price) => {
                           return (
                             <th
-                              key={price.id}
+                              key={price.date}
                               className={this.weekday(price.date)}
                             >
                               {price.morning_price}
@@ -108,7 +108,7 @@ class Home extends React.Component {
                         showNow.map((price) => {
                           return (
                             <th
-                              key={price.id}
+                              key={price.date}
                               className={this.weekday(price.date)}
                             >
                               {price.afternoon_price}
@@ -120,7 +120,7 @@ class Home extends React.Component {
                 </table>
 
                 <br />
-              </>
+              </Fragment>
             );
           })}
       </div>
