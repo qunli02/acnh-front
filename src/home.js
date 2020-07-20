@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import { connect } from "react-redux";
 import "./reducer.js";
-import { Redirect } from "react-router-dom";
 
 class Home extends React.Component {
   weekday = (date) => {
@@ -63,55 +62,61 @@ class Home extends React.Component {
               <>
                 {user.username}
                 <table>
-                  <tr>
-                    <th id="dividedCell">
-                      <div className="c1">Time</div>
-                      <div className="c2">Date</div>
-                    </th>
-                    {user &&
-                      user.turnip_sell_prices &&
-                      showNow.map((price) => {
-                        return (
-                          <th
-                            key={price.id}
-                            className={this.weekday(price.date)}
-                          >
-                            {this.exactDate(price.date)}{" "}
-                            {this.weekday(price.date)}
-                          </th>
-                        );
-                      })}
-                  </tr>
-                  <tr>
-                    <th>morning price</th>
-                    {user &&
-                      user.turnip_sell_prices &&
-                      showNow.map((price) => {
-                        return (
-                          <th
-                            key={price.id}
-                            className={this.weekday(price.date)}
-                          >
-                            {price.morning_price}
-                          </th>
-                        );
-                      })}
-                  </tr>
-                  <tr>
-                    <th>Afternoon price</th>
-                    {user &&
-                      user.turnip_sell_prices &&
-                      showNow.map((price) => {
-                        return (
-                          <th
-                            key={price.id}
-                            className={this.weekday(price.date)}
-                          >
-                            {price.afternoon_price}
-                          </th>
-                        );
-                      })}
-                  </tr>
+                  <thead>
+                    <tr>
+                      <th id="dividedCell">
+                        <div className="c1">Time</div>
+                        <div className="c2">Date</div>
+                      </th>
+                      {user &&
+                        user.turnip_sell_prices &&
+                        showNow.map((price) => {
+                          return (
+                            <th
+                              key={price.id}
+                              className={this.weekday(price.date)}
+                            >
+                              {this.exactDate(price.date)}{" "}
+                              {this.weekday(price.date)}
+                            </th>
+                          );
+                        })}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>morning price</th>
+                      {user &&
+                        user.turnip_sell_prices &&
+                        showNow.map((price) => {
+                          return (
+                            <th
+                              key={price.id}
+                              className={this.weekday(price.date)}
+                            >
+                              {price.morning_price}
+                            </th>
+                          );
+                        })}
+                    </tr>
+                  </tbody>
+                  <tbody>
+                    <tr>
+                      <th>Afternoon price</th>
+                      {user &&
+                        user.turnip_sell_prices &&
+                        showNow.map((price) => {
+                          return (
+                            <th
+                              key={price.id}
+                              className={this.weekday(price.date)}
+                            >
+                              {price.afternoon_price}
+                            </th>
+                          );
+                        })}
+                    </tr>
+                  </tbody>
                 </table>
 
                 <br />

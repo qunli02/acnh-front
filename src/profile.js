@@ -97,45 +97,60 @@ class Profile extends React.Component {
       <div>
         {this.show()}
         <table>
-          <tr>
-            <th id="dividedCell">
-              <div className="c1">Time</div>
-              <div className="c2">Date</div>
-            </th>
-            {this.props.user &&
-              this.props.user.turnip_sell_prices &&
-              showNow.map((price) => {
-                return (
-                  <th key={price.id} className={this.weekday(price.date)}>
-                    {this.exactDate(price.date)} {this.weekday(price.date)}
-                  </th>
-                );
-              })}
-          </tr>
-          <tr>
-            <th>morning price</th>
-            {this.props.user &&
-              this.props.user.turnip_sell_prices &&
-              showNow.map((price) => {
-                return (
-                  <th key={price.id} className={this.weekday(price.date)}>
-                    {price.morning_price}
-                  </th>
-                );
-              })}
-          </tr>
-          <tr>
-            <th>Afternoon price</th>
-            {this.props.user &&
-              this.props.user.turnip_sell_prices &&
-              showNow.map((price) => {
-                return (
-                  <th key={price.id} className={this.weekday(price.date)}>
-                    {price.afternoon_price}
-                  </th>
-                );
-              })}
-          </tr>
+          <thead>
+            <tr>
+              <th id="dividedCell">
+                <div className="c1">Time</div>
+                <div className="c2">Date</div>
+              </th>
+              {this.props.user &&
+                this.props.user.turnip_sell_prices &&
+                showNow.map((price) => {
+                  return (
+                    <th
+                      key={price.id ? price.id : Math.random()}
+                      className={this.weekday(price.date)}
+                    >
+                      {this.exactDate(price.date)} {this.weekday(price.date)}
+                    </th>
+                  );
+                })}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>morning price</th>
+              {this.props.user &&
+                this.props.user.turnip_sell_prices &&
+                showNow.map((price) => {
+                  return (
+                    <th
+                      key={price.id ? price.id : Math.random()}
+                      className={this.weekday(price.date)}
+                    >
+                      {price.morning_price}
+                    </th>
+                  );
+                })}
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <th>Afternoon price</th>
+              {this.props.user &&
+                this.props.user.turnip_sell_prices &&
+                showNow.map((price) => {
+                  return (
+                    <th
+                      key={price.id ? price.id : Math.random()}
+                      className={this.weekday(price.date)}
+                    >
+                      {price.afternoon_price}
+                    </th>
+                  );
+                })}
+            </tr>
+          </tbody>
         </table>
         <button onClick={this.showall}>view all price</button> <br />
         profile
@@ -150,9 +165,9 @@ class Profile extends React.Component {
           <br />
           <label>Time:</label>
           <input type="radio" id="morning" name="time" value="morning" />
-          <label for="afternoon">Morning</label>
+          <label htmlFor="afternoon">Morning</label>
           <input type="radio" id="afternoon" name="time" value="afternoon" />
-          <label for="afternoon">Afternoon</label>
+          <label htmlFor="afternoon">Afternoon</label>
           <br />
           <label>
             Price:
