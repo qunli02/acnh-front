@@ -12,3 +12,7 @@ then run `npm start`
 
 Remember this appilcation will not run correctly with out its back end so please run that along with this\
 [acnh-back](https://github.com/qunli02/acnh-back)
+
+# Contact
+
+if there is any problem you can contact me at qunli02@gmail.com
